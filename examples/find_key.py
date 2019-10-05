@@ -26,7 +26,6 @@ print("Hold a tag near the reader")
 for KEY in KEYCHAIN:
 
     SimpleMFRC522.KEY = KEY
-    # KEY = [0XD3,0XF7,0XD3,0XF7,0XD3,0XF7]
 
     data = reader.read()
 

@@ -11,7 +11,7 @@ class SimpleMFRC522:
     # KEY = [0XD3,0XF7,0XD3,0XF7,0XD3,0XF7]
     # 160 161 162 163 164 165
     KEY = [211, 247, 211, 247, 211, 247]
-    
+
 
     #
     # KEYCHAIN = [
