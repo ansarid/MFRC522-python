@@ -126,7 +126,7 @@ class MFRC522:
 
     serNum = []
 
-    def __init__(self, bus=1, device=1, spd=1000000, pin_mode=10, pin_rst=-1, debugLevel='WARNING'):
+    def __init__(self, bus=1, device=0, spd=1000000, pin_mode=10, pin_rst=-1, debugLevel='WARNING'):
         self.spi = spidev.SpiDev()
         self.spi.open(bus, device)
         self.spi.max_speed_hz = spd
@@ -349,12 +349,10 @@ class MFRC522:
         (status, backData, backLen) = self.MFRC522_ToCard(self.PCD_AUTHENT, buff)
 
         # Check if an error occurred
-        if not (status == self.MI_OK):
-            self.logger.error("AUTH ERROR!!")
-        if not (self.Read_MFRC522(self.Status2Reg) & 0x08) != 0:
-            self.logger.error("AUTH ERROR(status2reg & 0x08) != 0")
-
-        # Return the status
+        # if not (status == self.MI_OK):
+        #     self.logger.error("AUTH ERROR!!")
+        # if not (self.Read_MFRC522(self.Status2Reg) & 0x08) != 0:
+        #     self.logger.error("AUTH ERROR(status2reg & 0x08) != 0")
         return status
 
     def MFRC522_StopCrypto1(self):
