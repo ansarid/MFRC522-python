@@ -4,6 +4,9 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
+# If this key doesnt work for you, try running find_key.py to find the key for your RFID
+SimpleMFRC522.KEY = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
+
 try:
     print("Hold a tag near the reader")
     while True:
