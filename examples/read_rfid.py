@@ -10,7 +10,7 @@ SimpleMFRC522.KEY = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 try:
     print("Hold a tag near the reader")
     while True:
-        id, text = reader.read()
+        id, text = reader.read(detect=False)    # Set detect=True to detect that RFID is not present. Will return 'id=None' and 'text=None'.
         print("SN: %s \t\tData: %s" % (id,text))
 except KeyboardInterrupt:
     raise

@@ -36,15 +36,24 @@ class SimpleMFRC522:
     def __init__(self):
         self.READER = MFRC522()
 
-    def read(self):
-        id, text = self.read_no_block()
-        while not id:
+    def read(self, detect=False):
+        id = None
+        if not detect:
+            while not id:
+                data = self.read_no_block()
+                if data == 2:
+                    id, text = (None, "AUTH_ERROR")
+                else:
+                    id, text = data
+            return id, text
+        else:
+            id, text = self.read_no_block()
             data = self.read_no_block()
             if data == 2:
                 id, text = (None, "AUTH_ERROR")
             else:
                 id, text = data
-        return id, text
+            return id, text
 
     def read_id(self):
         id = self.read_id_no_block()
